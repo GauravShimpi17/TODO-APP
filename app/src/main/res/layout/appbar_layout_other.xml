@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/editTaskToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_color"
+        app:title="Edit Task"
+        app:titleTextColor="@color/white"
+        app:titleTextAppearance="@style/appbar_title"
+        >
+<!--
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/todo_app"
+            android:textAllCaps="true"
+            style="@style/appbar_title"/>-->
+
+    </androidx.appcompat.widget.Toolbar>
+
+</com.google.android.material.appbar.AppBarLayout>

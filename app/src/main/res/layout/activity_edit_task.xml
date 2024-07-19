@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ActivityEditTask">
+
+    <include
+        android:id="@+id/editTaskToolbar"
+        layout="@layout/appbar_layout_other"
+        />
+
+
+    <EditText
+        android:id="@+id/editTaskTitle"
+        style="@style/add_task_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="task"
+        android:hint="@string/title"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/editTaskToolbar" />
+
+    <EditText
+        android:id="@+id/editTaskSubtitle"
+        style="@style/add_task_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="task"
+        android:hint="@string/detail"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/editTaskTitle" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/updateEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/button"
+        android:text="Update"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cancelEdit"
+        app:layout_constraintTop_toBottomOf="@id/editTaskSubtitle" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancelEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/button"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintStart_toEndOf="@id/updateEdit"
+        app:layout_constraintTop_toBottomOf="@id/editTaskSubtitle"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

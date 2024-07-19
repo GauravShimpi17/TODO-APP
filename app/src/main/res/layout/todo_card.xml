@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="3dp"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="10dp"
+    tools:menu="@menu/action_bar_menu">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/cardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="todo title"
+            android:textAllCaps="true"
+            android:textColor="@color/common_color"
+            android:textFontWeight="600"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="p" />
+
+        <TextView
+            android:id="@+id/cardSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="todo sub title"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/cardTitle"
+            app:layout_constraintTop_toBottomOf="@id/cardTitle" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="editButton" />
+
+        <ImageButton
+            android:id="@+id/editButton"
+            style="@style/card_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/edittext"
+            android:src="@drawable/ic_pencil"
+            app:layout_constraintEnd_toStartOf="@id/deleteButton"
+            app:layout_constraintStart_toStartOf="@id/barrier" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            style="@style/card_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/edittext"
+            android:src="@drawable/ic_trash"
+            app:layout_constraintEnd_toStartOf="@id/completeButton" />
+
+        <ImageButton
+            android:id="@+id/completeButton"
+            style="@style/card_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/edittext"
+            android:src="@drawable/ic_check_circle"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

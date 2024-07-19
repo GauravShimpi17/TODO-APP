@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ActivityAddTask">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/addTaskAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/addTaskToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_color"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/appbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_task" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <EditText
+        android:id="@+id/addTaskTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="task"
+        android:hint="@string/title"
+        app:layout_constraintTop_toBottomOf="@id/addTaskToolbar"
+        style="@style/add_task_text"
+        />
+
+    <EditText
+        android:id="@+id/addTaskSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="task"
+        android:hint="@string/detail"
+        app:layout_constraintTop_toBottomOf="@id/addTaskTitle"
+        style="@style/add_task_text"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addTaskBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/addTaskSubtitle"
+        android:text="ADD"
+        android:textSize="16sp"
+        android:layout_margin="10dp"
+        style="@style/button_style"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

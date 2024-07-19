@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity"
+    android:paddingHorizontal="40dp"
+    android:background="@color/background_color">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="15dp"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/login_text_style">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userIdInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:autofillHints="gaurav.shimpi"
+                    android:hint="@string/user_id_hint"
+                    android:textColorHint="@color/common_color"
+                    android:paddingHorizontal="10dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/login_text_style"
+                app:layout_constraintTop_toBottomOf="@id/userId">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="@string/password_hint"
+                    android:paddingHorizontal="10dp"
+                    android:textColorHint="@color/common_color"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/login"
+                style="@style/button_style"
+                android:elevation="15dp"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
