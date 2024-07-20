@@ -11,6 +11,7 @@
     tools:menu="@menu/action_bar_menu">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -79,6 +80,13 @@
             android:contentDescription="@string/edittext"
             android:src="@drawable/ic_check_circle"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/btnGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:constraint_referenced_ids="editButton, completeButton, deleteButton"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

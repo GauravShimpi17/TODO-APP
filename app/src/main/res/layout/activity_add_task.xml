@@ -7,26 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.ActivityAddTask">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/addTaskAppbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.Toolbar
+    <include
         android:id="@+id/addTaskToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/common_color"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            style="@style/appbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_task" />
-
-    </androidx.appcompat.widget.Toolbar>
+        layout="@layout/appbar_layout_other"/>
 
 
     <EditText
