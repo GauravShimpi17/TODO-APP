@@ -1,14 +1,14 @@
 package com.todo.ui
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
+import android.widget.DatePicker
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,15 +21,16 @@ import com.todo.model.TodoData
 import com.todo.repo.TodoRepo
 import com.todo.viewModel.SaveDataViewModel
 import com.todo.viewModel.SaveViewModelFactory
+import java.util.*
 
 class ActivityHomePage : AppCompatActivity() {
 
-    private val binding : ActivityHomePageBinding by lazy {
+    private val binding: ActivityHomePageBinding by lazy {
         ActivityHomePageBinding.inflate(layoutInflater)
     }
 
     private lateinit var adapter: TodoAdapter
-    lateinit var viewModel: SaveDataViewModel
+    private lateinit var viewModel: SaveDataViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -37,14 +38,15 @@ class ActivityHomePage : AppCompatActivity() {
         showAllList()
 
 
-        binding.floatingButton.setOnClickListener{
+        binding.floatingButton.setOnClickListener {
             Intent(this, ActivityAddTask::class.java).also {
                 startActivity(it)
             }
         }
+        setSupportActionBar(binding.appbarHomepage.toolbarHomePage)
 
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
+        binding.bottomNavigationView.setOnItemSelectedListener { it ->
+            when (it.itemId) {
                 R.id.completed -> {
                     Intent(this@ActivityHomePage, ActivityCompletedList::class.java).also {
                         startActivity(it)
@@ -56,12 +58,43 @@ class ActivityHomePage : AppCompatActivity() {
         }
     }
 
+        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+            menuInflater.inflate(R.menu.action_bar_menu, menu)
+            return true
+        }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.calender -> {
+                showCalendarPicker()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showCalendarPicker() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this, { _: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
+                val selectedDate = "$dayOfMonth/${month + 1}/$year"
+                Toast.makeText(this, "Selected date: $selectedDate", Toast.LENGTH_SHORT).show()
+            }, year, month, dayOfMonth
+        )
+
+        datePickerDialog.show()
+    }
 
 
-    private fun showAllList(){
+    private fun showAllList() {
 
         adapter = TodoAdapter()
-        adapter.setClickListener(object : TaskAction{
+        adapter.setClickListener(object : TaskAction {
             override fun onEditClick(todoData: TodoData) {
                 Intent(this@ActivityHomePage, ActivityEditTask::class.java).also {
                     it.putExtra("id", todoData.id)
@@ -84,8 +117,7 @@ class ActivityHomePage : AppCompatActivity() {
         val dao = AppDatabase.getDatabase(this)
         val repo = TodoRepo(dao)
         viewModel = ViewModelProvider(
-            this,
-            SaveViewModelFactory(repo)
+            this, SaveViewModelFactory(repo)
         )[SaveDataViewModel::class.java]
 
         viewModel.getAllData().observe(this, Observer {
@@ -96,7 +128,7 @@ class ActivityHomePage : AppCompatActivity() {
         })
     }
 
-    fun alertIsComplete(todoData: TodoData){
+    fun alertIsComplete(todoData: TodoData) {
         AlertDialog.Builder(this).apply {
             setTitle("Add to completed")
             setMessage("Are you sure you want to add this todo to completed")
@@ -110,7 +142,7 @@ class ActivityHomePage : AppCompatActivity() {
         }.show()
     }
 
-    fun alertDelete(todoData: TodoData){
+    fun alertDelete(todoData: TodoData) {
         AlertDialog.Builder(this).apply {
             setTitle("Delete Task")
             setMessage("Are you sure you want to delete this task")
@@ -123,6 +155,13 @@ class ActivityHomePage : AppCompatActivity() {
             setCancelable(false)
         }.show()
     }
+
+
+    /*override fun onDestroy() {
+        super.onDestroy()
+        finishAffinity()
+        exitProcess(0)
+    }*/
 
 
 }

@@ -18,11 +18,11 @@
 
         <TextView
             android:id="@+id/cardTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:text="todo title"
+            android:text="@string/todo_title"
             android:textAllCaps="true"
             android:textColor="@color/common_color"
             android:textFontWeight="600"
@@ -33,10 +33,10 @@
 
         <TextView
             android:id="@+id/cardSubTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="todo sub title"
+            android:text="@string/todo_sub_title"
             android:textAllCaps="true"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/cardTitle"
@@ -85,7 +85,7 @@
             android:id="@+id/btnGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:constraint_referenced_ids="editButton, completeButton, deleteButton"
+            app:constraint_referenced_ids="editButton, completeButton"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

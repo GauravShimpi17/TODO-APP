@@ -13,4 +13,7 @@
     <string name="add_task">Add Task</string>
     <string name="title">Title</string>
     <string name="detail">Detail</string>
+    <string name="todo_title">todo title</string>
+    <string name="todo_sub_title">todo sub title</string>
+    <string name="add">ADD</string>
 </resources>
