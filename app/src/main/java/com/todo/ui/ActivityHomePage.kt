@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.todo.R
 import com.todo.adapter.TaskAction
 import com.todo.adapter.TodoAdapter
@@ -58,10 +59,10 @@ class ActivityHomePage : AppCompatActivity() {
         }
     }
 
-        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            menuInflater.inflate(R.menu.action_bar_menu, menu)
-            return true
-        }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_bar_menu, menu)
+        return true
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -81,9 +82,17 @@ class ActivityHomePage : AppCompatActivity() {
         val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(
-            this, { _: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
-                val selectedDate = "$dayOfMonth/${month + 1}/$year"
-                Toast.makeText(this, "Selected date: $selectedDate", Toast.LENGTH_SHORT).show()
+            this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(year, month, dayOfMonth)
+                viewModel.getByDate(selectedDate.timeInMillis).observe(this, Observer {
+                    adapter.setData(it)
+                    Toast.makeText(
+                        this,
+                        "Selected date: $dayOfMonth/${month + 1}/$year",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                })
             }, year, month, dayOfMonth
         )
 

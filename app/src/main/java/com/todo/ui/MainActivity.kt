@@ -29,8 +29,9 @@ class MainActivity : AppCompatActivity() {
             val password = binding.passwordInput.text.toString()
 
             if (Credentials.validLogin(username,password)){
-                Intent(this, ActivityHomePage::class.java).also {
-                    startActivity(it)
+                Intent(this, ActivityHomePage::class.java).apply {
+                    setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(this)
                 }
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
             }else{

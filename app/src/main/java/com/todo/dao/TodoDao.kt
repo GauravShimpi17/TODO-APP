@@ -12,14 +12,17 @@ import com.todo.model.TodoData
 interface TodoDao {
 
     @Upsert
-    fun insertData(todoData: TodoData)
+    suspend fun insertData(todoData: TodoData)
 
     @Delete
-    fun deleteData(todoData: TodoData)
+    suspend fun deleteData(todoData: TodoData)
 
     @Query("SELECT * FROM Todo_Task ORDER BY isCompleted ASC, timestamp DESC ")
     fun getAllData() : LiveData<List<TodoData>>
 
     @Query("SELECT * FROM Todo_Task WHERE id = :id")
     fun getById(id : Long) : TodoData
+
+    @Query("SELECT * FROM Todo_Task WHERE timestamp >= :start and timestamp<= :end")
+    fun getByDate(start : Long, end : Long) : LiveData<List<TodoData>>
 }

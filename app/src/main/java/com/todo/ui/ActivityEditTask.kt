@@ -20,7 +20,7 @@ import com.todo.viewModel.SaveViewModelFactory
 
 class ActivityEditTask : AppCompatActivity() {
 
-    val binding: ActivityEditTaskBinding by lazy {
+    private val binding: ActivityEditTaskBinding by lazy {
         ActivityEditTaskBinding.inflate(layoutInflater)
     }
     private lateinit var viewModel: SaveDataViewModel
@@ -78,7 +78,7 @@ class ActivityEditTask : AppCompatActivity() {
         }
     }
 
-    fun alertEditTask(todoData: TodoData){
+    private fun alertEditTask(todoData: TodoData){
         AlertDialog.Builder(this).apply {
             setTitle("Update Task")
             setMessage("Are you sure you want to update the task")
