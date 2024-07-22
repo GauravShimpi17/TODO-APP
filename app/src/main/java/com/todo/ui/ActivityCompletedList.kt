@@ -35,7 +35,7 @@ class ActivityCompletedList : AppCompatActivity() {
 
     }
     private fun setUpToolBar(){
-        setSupportActionBar(binding.completedListToolbar.editTaskToolbar)
+        setSupportActionBar(binding.tbCompletedList.tbEditTask)
         supportActionBar?.apply {
             setDisplayShowTitleEnabled(true)
             title = "Completed Task"
@@ -47,8 +47,8 @@ class ActivityCompletedList : AppCompatActivity() {
     private fun makeRecycler(){
         adapter = TodoAdapter()
 
-        binding.completedTaskRecycler.adapter = adapter
-        binding.completedTaskRecycler.layoutManager = LinearLayoutManager(this)
+        binding.rvCompletedTask.adapter = adapter
+        binding.rvCompletedTask.layoutManager = LinearLayoutManager(this)
         val dao = AppDatabase.getDatabase(this)
         val repo = TodoRepo(dao)
         viewModel = ViewModelProvider(

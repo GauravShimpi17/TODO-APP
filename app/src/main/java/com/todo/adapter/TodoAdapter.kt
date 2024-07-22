@@ -48,8 +48,8 @@ class TodoAdapter() :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val itemPosition = todoList[position]
         holder.binding.apply {
-            cardTitle.text = itemPosition.title
-            cardSubTitle.text = itemPosition.subtitle
+            txtCardTitle.text = itemPosition.title
+            txtCardSubTitle.text = itemPosition.subtitle
 
             if (itemPosition.isCompleted){
                 btnGroup.visibility = View.GONE
@@ -69,21 +69,21 @@ class TodoAdapter() :
 
     inner class MyViewHolder(val binding: TodoCardBinding) : ViewHolder(binding.root) {
         init {
-            binding.editButton.setOnClickListener{
+            binding.btnEditButton.setOnClickListener{
                 if (adapterPosition == NO_POSITION){
                     return@setOnClickListener
                 }
                 taskAction.onEditClick(todoList[adapterPosition])
             }
 
-            binding.deleteButton.setOnClickListener {
+            binding.btnDeleteButton.setOnClickListener {
                 if(adapterPosition == NO_POSITION){
                     return@setOnClickListener
                 }
                 taskAction.onDeleteClick(todoList[adapterPosition])
             }
 
-            binding.completeButton.setOnClickListener{
+            binding.btnCompleteButton.setOnClickListener{
                 if (adapterPosition == NO_POSITION){
                     return@setOnClickListener
                 }

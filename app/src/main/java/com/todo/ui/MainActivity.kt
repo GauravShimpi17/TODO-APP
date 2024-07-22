@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.loginButton.setOnClickListener {
-            val username = binding.userIdInput.text.toString()
-            val password = binding.passwordInput.text.toString()
+        binding.btnLogin.setOnClickListener {
+            val username = binding.txtUserIdInput.text.toString()
+            val password = binding.txtPasswordInput.text.toString()
 
             if (Credentials.validLogin(username,password)){
                 Intent(this, ActivityHomePage::class.java).apply {

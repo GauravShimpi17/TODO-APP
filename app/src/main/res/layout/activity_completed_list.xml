@@ -6,11 +6,11 @@
     tools:context=".ui.ActivityCompletedList">
 
     <include
-        android:id="@+id/completedListToolbar"
+        android:id="@+id/tbCompletedList"
         layout="@layout/appbar_layout_other"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/completedTaskRecycler"
+        android:id="@+id/rvCompletedTask"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"

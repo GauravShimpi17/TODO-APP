@@ -37,8 +37,8 @@ class ActivityEditTask : AppCompatActivity() {
     }
 
 
-    fun setToolBar() {
-        setSupportActionBar(binding.editTaskToolbar.editTaskToolbar)
+    private fun setToolBar() {
+        setSupportActionBar(binding.tbEditTask.tbEditTask)
         supportActionBar?.apply {
             setDisplayShowTitleEnabled(true)
             title = "Edit Task"
@@ -47,7 +47,7 @@ class ActivityEditTask : AppCompatActivity() {
         }
     }
 
-    fun getDataById() {
+    private fun getDataById() {
         val dao = AppDatabase.getDatabase(this)
         val repo = TodoRepo(dao)
 
@@ -58,14 +58,14 @@ class ActivityEditTask : AppCompatActivity() {
 
         id = intent.getLongExtra("id", 0)
         todoData =  viewModel.getById(id)
-        binding.editTaskTitle.setText(todoData.title)
-        binding.editTaskSubtitle.setText(todoData.subtitle)
+        binding.txtEditTaskTitle.setText(todoData.title)
+        binding.txtEditTaskSubtitle.setText(todoData.subtitle)
     }
 
     private fun updateData(){
-        binding.updateEdit.setOnClickListener {
-            val title = binding.editTaskTitle.text.toString()
-            val subTitle = binding.editTaskSubtitle.text.toString()
+        binding.btnUpdateEdit.setOnClickListener {
+            val title = binding.txtEditTaskTitle.text.toString()
+            val subTitle = binding.txtEditTaskSubtitle.text.toString()
             val data = TodoData(title, subTitle,id)
             alertEditTask(data)
 
@@ -73,7 +73,7 @@ class ActivityEditTask : AppCompatActivity() {
     }
 
     private fun cancelEdit(){
-        binding.cancelEdit.setOnClickListener {
+        binding.btnCancelEdit.setOnClickListener {
             finish()
         }
     }

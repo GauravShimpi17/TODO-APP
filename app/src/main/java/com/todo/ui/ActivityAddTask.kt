@@ -25,7 +25,7 @@ class ActivityAddTask : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.addTaskTitle.error = "Title Can not be empty"
+        binding.txtAddTaskTitle.error = "Title Can not be empty"
 
         appbar()
         addOnClick()
@@ -41,7 +41,7 @@ class ActivityAddTask : AppCompatActivity() {
     }
 
     private fun appbar() {
-        val toolbar = binding.addTaskToolbar.editTaskToolbar
+        val toolbar = binding.tbAddTask.tbEditTask
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
             setDisplayShowTitleEnabled(true)
@@ -58,9 +58,9 @@ class ActivityAddTask : AppCompatActivity() {
             this, SaveViewModelFactory(repo)
         )[SaveDataViewModel::class.java]
 
-        binding.addTaskBtn.setOnClickListener {
-            val title = binding.addTaskTitle.text.toString()
-            val subtitle = binding.addTaskSubtitle.text.toString()
+        binding.btnAddTask.setOnClickListener {
+            val title = binding.txtAddTaskTitle.text.toString()
+            val subtitle = binding.txtAddTaskSubtitle.text.toString()
             val data = TodoData(title, subtitle)
             viewModel.insertData(data)
             Snackbar.make(binding.root, "Data Saved", Snackbar.LENGTH_LONG).show()

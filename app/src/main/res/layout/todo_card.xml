@@ -17,7 +17,7 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/cardTitle"
+            android:id="@+id/txtCardTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -32,15 +32,15 @@
             tools:targetApi="p" />
 
         <TextView
-            android:id="@+id/cardSubTitle"
+            android:id="@+id/txtCardSubTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="@string/todo_sub_title"
             android:textAllCaps="true"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/cardTitle"
-            app:layout_constraintTop_toBottomOf="@id/cardTitle" />
+            app:layout_constraintStart_toStartOf="@id/txtCardTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtCardTitle" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier"
@@ -48,31 +48,31 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:barrierDirection="start"
-            app:constraint_referenced_ids="editButton" />
+            app:constraint_referenced_ids="btnEditButton" />
 
         <ImageButton
-            android:id="@+id/editButton"
+            android:id="@+id/btnEditButton"
             style="@style/card_buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:contentDescription="@string/edittext"
             android:src="@drawable/ic_pencil"
-            app:layout_constraintEnd_toStartOf="@id/deleteButton"
+            app:layout_constraintEnd_toStartOf="@id/btnDeleteButton"
             app:layout_constraintStart_toStartOf="@id/barrier" />
 
         <ImageButton
-            android:id="@+id/deleteButton"
+            android:id="@+id/btnDeleteButton"
             style="@style/card_buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:contentDescription="@string/edittext"
             android:src="@drawable/ic_trash"
-            app:layout_constraintEnd_toStartOf="@id/completeButton" />
+            app:layout_constraintEnd_toStartOf="@id/btnCompleteButton" />
 
         <ImageButton
-            android:id="@+id/completeButton"
+            android:id="@+id/btnCompleteButton"
             style="@style/card_buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             android:id="@+id/btnGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:constraint_referenced_ids="editButton, completeButton"
+            app:constraint_referenced_ids="btnEditButton, btnCompleteButton"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

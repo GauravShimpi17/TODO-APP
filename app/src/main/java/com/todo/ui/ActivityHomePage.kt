@@ -5,14 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.DatePicker
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.todo.R
 import com.todo.adapter.TaskAction
 import com.todo.adapter.TodoAdapter
@@ -36,15 +35,17 @@ class ActivityHomePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        showAllList()
+        setUpRecyclerView()
+        getAllData()
+        clearFilter()
 
 
-        binding.floatingButton.setOnClickListener {
+        binding.fabAddButton.setOnClickListener {
             Intent(this, ActivityAddTask::class.java).also {
                 startActivity(it)
             }
         }
-        setSupportActionBar(binding.appbarHomepage.toolbarHomePage)
+        setSupportActionBar(binding.tbHomePage.toolbarHomePage)
 
         binding.bottomNavigationView.setOnItemSelectedListener { it ->
             when (it.itemId) {
@@ -86,6 +87,7 @@ class ActivityHomePage : AppCompatActivity() {
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(year, month, dayOfMonth)
                 viewModel.getByDate(selectedDate.timeInMillis).observe(this, Observer {
+                    binding.fabClearFilter.visibility = View.VISIBLE
                     adapter.setData(it)
                     Toast.makeText(
                         this,
@@ -99,9 +101,16 @@ class ActivityHomePage : AppCompatActivity() {
         datePickerDialog.show()
     }
 
+    private fun clearFilter(){
+        binding.fabClearFilter.setOnClickListener{
+            Toast.makeText(this, "Filter Cleared" , Toast.LENGTH_SHORT).show()
+            getAllData()
+            binding.fabClearFilter.visibility = View.GONE
+        }
+    }
 
-    private fun showAllList() {
 
+    private fun setUpRecyclerView() {
         adapter = TodoAdapter()
         adapter.setClickListener(object : TaskAction {
             override fun onEditClick(todoData: TodoData) {
@@ -119,7 +128,7 @@ class ActivityHomePage : AppCompatActivity() {
                 alertIsComplete(todoData)
             }
         })
-        val recycler = binding.addTaskRecycler
+        val recycler = binding.rvAddTask
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = adapter
 
@@ -128,11 +137,12 @@ class ActivityHomePage : AppCompatActivity() {
         viewModel = ViewModelProvider(
             this, SaveViewModelFactory(repo)
         )[SaveDataViewModel::class.java]
+    }
 
+    private fun getAllData(){
         viewModel.getAllData().observe(this, Observer {
             it?.let {
                 adapter.setData(it)
-
             }
         })
     }

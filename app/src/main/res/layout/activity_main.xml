@@ -24,13 +24,13 @@
             android:layout_height="wrap_content"
             android:padding="20dp">
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/userId"
+                android:id="@+id/txtUserId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 style="@style/login_text_style">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userIdInput"
+                    android:id="@+id/txtUserIdInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -41,13 +41,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password"
+                android:id="@+id/txtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/login_text_style"
-                app:layout_constraintTop_toBottomOf="@id/userId">
+                app:layout_constraintTop_toBottomOf="@id/txtUserId">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordInput"
+                    android:id="@+id/txtPasswordInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -58,10 +58,10 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/login_button"
+                android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/password"
+                app:layout_constraintTop_toBottomOf="@id/txtPassword"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="@string/login"

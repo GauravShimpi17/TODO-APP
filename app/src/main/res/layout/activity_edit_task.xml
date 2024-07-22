@@ -8,33 +8,33 @@
     tools:context=".ui.ActivityEditTask">
 
     <include
-        android:id="@+id/editTaskToolbar"
+        android:id="@+id/tbEditTask"
         layout="@layout/appbar_layout_other"
         />
 
 
     <EditText
-        android:id="@+id/editTaskTitle"
+        android:id="@+id/txtEditTaskTitle"
         style="@style/add_task_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="task"
         android:hint="@string/title"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/editTaskToolbar" />
+        app:layout_constraintTop_toBottomOf="@id/tbEditTask" />
 
     <EditText
-        android:id="@+id/editTaskSubtitle"
+        android:id="@+id/txtEditTaskSubtitle"
         style="@style/add_task_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="task"
         android:hint="@string/detail"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/editTaskTitle" />
+        app:layout_constraintTop_toBottomOf="@id/txtEditTaskTitle" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/updateEdit"
+        android:id="@+id/btnUpdateEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -45,10 +45,10 @@
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cancelEdit"
-        app:layout_constraintTop_toBottomOf="@id/editTaskSubtitle" />
+        app:layout_constraintEnd_toStartOf="@id/btnCancelEdit"
+        app:layout_constraintTop_toBottomOf="@id/txtEditTaskSubtitle" />
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/cancelEdit"
+        android:id="@+id/btnCancelEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -58,8 +58,8 @@
         android:textSize="16sp"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
-        app:layout_constraintStart_toEndOf="@id/updateEdit"
-        app:layout_constraintTop_toBottomOf="@id/editTaskSubtitle"
+        app:layout_constraintStart_toEndOf="@id/btnUpdateEdit"
+        app:layout_constraintTop_toBottomOf="@id/txtEditTaskSubtitle"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
