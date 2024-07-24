@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     object Credentials {
         private const val validUsername: String = "test"
-        private const val validPassword: String = "test@123"
+        private const val validPassword: String = "test123"
 
 
         fun validLogin(username: String, password: String) : Boolean {

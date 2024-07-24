@@ -86,6 +86,10 @@ class ActivityHomePage : AppCompatActivity() {
             this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(year, month, dayOfMonth)
+                selectedDate.set(Calendar.HOUR_OF_DAY, 0);
+                selectedDate.set(Calendar.MINUTE, 0);
+                selectedDate.set(Calendar.SECOND, 0);
+                selectedDate.set(Calendar.MILLISECOND, 0);
                 viewModel.getByDate(selectedDate.timeInMillis).observe(this, Observer {
                     binding.fabClearFilter.visibility = View.VISIBLE
                     adapter.setData(it)
